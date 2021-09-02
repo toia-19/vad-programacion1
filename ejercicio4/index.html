@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+    <!--Tema: Minty-->
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-secondary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Ejercicio 4</a>
+        </div>
+    </nav>
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-4">
+                <div class="mb-3">
+                    <label class="form-label">Velocidad Inicial</label>
+                    <input id="inp_vo" class="form-control" type="number"></input>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Velocidad Final</label>
+                    <input id="inp_vf" class="form-control" type="number"></input>
+                </div>
+
+                <button id="btn_calcular" class="btn btn-danger">Calcular</button>
+            </div>
+
+            <div class="col-8">
+                <h3 id="h_resultado"></h3>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
