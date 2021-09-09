@@ -22,7 +22,8 @@ export default class Area{
     }
 
     calcularArea(){
-        const area2 = (parseInt(this.bs2) * parseInt(this.al2));
+        const bloque2 = (parseInt(this.bs2) * parseInt(this.al2));
+        const area2 = bloque2 / 2;
         
         return area2;
     }
