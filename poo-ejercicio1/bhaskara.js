@@ -1,4 +1,4 @@
-// si no se coloca el export default, no tomará el main
+// si no se coloca el export default, no se tomará el main
 export default class Bhaskara {
     ca;
     cb;
