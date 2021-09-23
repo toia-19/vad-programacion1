@@ -5,24 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Firebase</title>
+    
+    <!--Tema: Minty-->
     <link rel="stylesheet" href="bootstrap.min.css">
+
+    <!--Enlace íconos-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+    <nav class="navbar navbar-dark bg-secondary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Firebase</a>
+        </div>
+    </nav>
     <div class="container mt-3">
-        <div class="mb-3">
-            <label class="form-label">Nombre:</label>
-            <input id="inp_nombre" placeholder="Ingrese Nombre:" type="text" class="form-control">
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Apellido:</label>
-            <input id="inp_apellido" placeholder="Ingrese Apellido:" type="text" class="form-control">
-        </div>
-        <div class="mb-3">
-            <label class="form-label">D.N.I.:</label>
-            <input id="inp_dni" placeholder="Ingrese D.N.I:" type="number" class="form-control">
-        </div>
+        <div class="row">
+            <div class="col-4">
+                <div class="mb-3">
+                    <label class="form-label">Nombre:</label>
+                    <input id="inp_nombre" placeholder="Ingrese Nombre:" type="text" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Apellido:</label>
+                    <input id="inp_apellido" placeholder="Ingrese Apellido:" type="text" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">D.N.I.:</label>
+                    <input id="inp_dni" placeholder="Ingrese D.N.I:" type="number" class="form-control">
+                </div>
+        
+                <button id="btn_guardar" class="btn btn-success">Obtener Datos</button>
+                <!--Puede ejecutar una acción con un click desde html: onclick="eliminarCliente()"-->
+            </div>
+            <div class="col-8">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>D.N.I.</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
 
-        <button id="btn_guardar" class="btn btn-secondary">Obtener Datos</button>
+                    <tbody id="tbody">
+                    </tbody>     
+                </table>
+            </div>
+        </div>
     </div>
 
     <!--Las librerías siempre van registradas antes que el archivo firebase-->
