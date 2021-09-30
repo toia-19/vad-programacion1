@@ -24,20 +24,18 @@ const guardarCliente = async () => {
     // Enviamos los datos
     await db.collection("clientes").doc().set(unCliente);
 
-    // Los input son vaciados para reutilizarse
-    document.getElementById("inp_nombre").value = '';
-    document.getElementById("inp_apellido").value = '';
-    document.getElementById("inp_dni").value = '';
-
+    // Refrescar la tabla
     listarCliente();
+    // Vaciar la tabla
+    vaciarLista();
 }
 
-// botón guardar
 const boton = document.getElementById("btn_guardar");
 boton.addEventListener("click",guardarCliente);
 
 // ELIMINAR CLIENTE
-function eliminarCliente (id) {
+function eliminarCliente () {
+    const id = document.getElementById("inp_id").value;
     db.collection("clientes").doc(id).delete();
 
     listarCliente();
@@ -65,8 +63,12 @@ const listarCliente = async () => {
                 <td>${element.apellido}</td>
                 <td>${element.dni}</td>
                 <td>
-                    <button onclick="eliminarCliente('${element.id}')" class="btn btn-danger btn-sm">
+                    <button onclick="llenarInputOculto('${element.id}')" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <i class="fa fa-trash-o"></i>
+                    </button>
+
+                    <button onclick="editarCliente('${element.nombre}','${element.apellido}',${element.dni},'${element.id}')" class="btn btn-info btn-sm">
+                    <i class="fa fa-edit"></i>
                     </button>
                 </td>
             </tr>
@@ -79,3 +81,41 @@ const listarCliente = async () => {
 
 // ejecutamos la función
 listarCliente();
+
+function llenarInputOculto (id){
+    document.getElementById("inp_id").value = id;
+}
+
+// EDITAR CLIENTE
+function editarCliente (nombre, apellido, dni, id){
+    document.getElementById("inp_nombre").value = nombre;
+    document.getElementById("inp_apellido").value = apellido;
+    document.getElementById("inp_dni").value = dni;
+    document.getElementById("inp_id").value = id;
+}
+
+// ACTUALIZAR LISTA
+function actualizarCliente (){
+    const nombre = document.getElementById("inp_nombre").value;
+    const apellido = document.getElementById("inp_apellido").value;
+    const dni = document.getElementById("inp_dni").value;
+    const id = document.getElementById("inp_id").value;
+
+    const clienteActualizado = {
+        nombre,
+        apellido,
+        dni
+    }
+
+    db.collection("clientes").doc(id).update(clienteActualizado);
+    listarCliente();
+    vaciarLista();
+}
+
+// vaciamos los input
+function vaciarLista(){
+    document.getElementById("inp_nombre").value = '';
+    document.getElementById("inp_apellido").value = '';
+    document.getElementById("inp_dni").value = '';
+    document.getElementById("inp_id").value = '';
+}
